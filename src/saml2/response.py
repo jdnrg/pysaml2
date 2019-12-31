@@ -208,7 +208,14 @@ def for_me(conditions, myself):
     for restriction in conditions.audience_restriction:
         if not restriction.audience:
             continue
+        print("restriction.audience",restriction.audience)
         for audience in restriction.audience:
+
+            if not audience:
+                return True
+            if not audience.text:
+                return True
+                
             if audience.text.strip() == myself:
                 return True
             else:
